@@ -4,28 +4,23 @@ namespace AirCool.Domain.Entities
 {
     public class VotacaoEntity : SubEntity
     {
-        public Guid IdEmpresa { get; set; }
-        public Guid IdDepartamento { get; set; }
-        public DateTime DataInicioVotacao { get; set; }
-        public DateTime DataFinalVotacao { get; set; }
-        public decimal Temperatura { get; set; }
-        public VotacaoEntity(Guid EmpresaId,
-                             Guid IdUsuario,
-                             Guid DepartamentoId,
-                             DateTime DataInicioVotacao,
-                             DateTime DataFinalVotacao) : base(EmpresaId, IdUsuario)
-        {
-            this.IdEmpresa = EmpresaId;
-            this.IdDepartamento= DepartamentoId;
-            this.DataInicioVotacao = DataInicioVotacao;
-            this.DataFinalVotacao = DataFinalVotacao;
-        } 
+        public Guid DepartamentoId { get; private set; }
+        public Departamento Departamento { get; private set; }
+        public DateTime DataInicioVotacao { get; private set; }
+        public DateTime DataFinalVotacao { get; private set; }
+        public Empresa Empresa { get; private set; }
+        public decimal Temperatura { get; private set; }
 
-        public static VotacaoEntity Criar(Guid EmpresaId,
-                             Guid UsuarioId,
-                             Guid DepartamentoId,
-                             DateTime DataInicioVotacao,
-                             DateTime DataFinalVotacao) => new VotacaoEntity(EmpresaId, UsuarioId, DepartamentoId, DataInicioVotacao, DataFinalVotacao); 
+        protected VotacaoEntity() { }
+
+        public VotacaoEntity(Guid empresaId, Guid usuarioId, Guid departamentoId, DateTime dataInicio, DateTime dataFinal, decimal temperatura)
+            : base(empresaId, usuarioId)
+        {
+            DepartamentoId = departamentoId;
+            DataInicioVotacao = dataInicio;
+            DataFinalVotacao = dataFinal;
+            Temperatura = temperatura;
+        }
     }
 }
 

@@ -9,6 +9,7 @@ namespace AirCool.Domain.Entities
         public Guid IdDepartamento { get; set; }
         public decimal TemperaturaInicial { get; set; }
         public decimal TemperaturaFinal { get; set; }
+        public VotacaoEntity Votacao { get; set; }
 
         public Resultado(Guid idEmpresa, Guid idUsuario) : base(idEmpresa, idUsuario) { }
     }

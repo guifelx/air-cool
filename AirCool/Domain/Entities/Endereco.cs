@@ -11,6 +11,7 @@ namespace AirCool.Domain.Entities
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public string Cep { get; set; }
+        public Empresa Empresa { get; set; }
 
         public Endereco(Guid idEmpresa, Guid idUsuario) : base(idEmpresa, idUsuario) { }
     }

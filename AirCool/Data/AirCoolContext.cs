@@ -1,5 +1,6 @@
 ﻿using AirCool.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace AirCool.Data
 {
@@ -9,6 +10,11 @@ namespace AirCool.Data
         public AirCoolContext(DbContextOptions<AirCoolContext> options) : base(options)
         {
             
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(AirCoolContext).Assembly);
+            base.OnModelCreating(modelBuilder);
         }
 
         public DbSet<VotacaoEntity> Votacoes { get; set; }

@@ -7,10 +7,12 @@
         public Guid IdUsuario { get; private set; }
         public Guid IdEmpresa { get; private set; }
 
+        protected Entity() { }
+        
         protected Entity(Guid empresaId, Guid idUsuario)
         {
-            IdExterno = Guid.NewGuid();
-            IdUsuario = Guid.NewGuid();
+            this.IdExterno = Guid.NewGuid();
+            this.IdUsuario = idUsuario;
             this.IdEmpresa = empresaId;
             this.IdUsuario = idUsuario;
         }
